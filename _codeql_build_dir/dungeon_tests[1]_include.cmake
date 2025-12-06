@@ -1,5 +1,0 @@
-if(EXISTS "/home/runner/work/SolidLab/SolidLab/_codeql_build_dir/dungeon_tests[1]_tests.cmake")
-  include("/home/runner/work/SolidLab/SolidLab/_codeql_build_dir/dungeon_tests[1]_tests.cmake")
-else()
-  add_test(dungeon_tests_NOT_BUILT dungeon_tests_NOT_BUILT)
-endif()
