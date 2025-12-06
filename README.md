@@ -27,7 +27,7 @@ cmake ..
 cmake --build .
 ```
 
-Testing is enabled by default via `BUILD_TESTING=ON`. To disable tests:
+Testing is enabled by default (`BUILD_TESTING` is `ON`). To disable tests:
 ```bash
 cmake -DBUILD_TESTING=OFF ..
 ```
