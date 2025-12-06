@@ -27,6 +27,22 @@ cmake ..
 make
 ```
 
+To build with testing (enabled by default):
+```bash
+mkdir build
+cd build
+cmake -DBUILD_TESTING=ON ..
+cmake --build .
+```
+
+To build without testing:
+```bash
+mkdir build
+cd build
+cmake -DBUILD_TESTING=OFF ..
+cmake --build .
+```
+
 ## Usage
 
 Run the editor:
@@ -104,7 +120,58 @@ src/
 
 ## Testing
 
-Run the test script:
+The project uses GoogleTest for unit testing. Tests are built by default but can be disabled with `-DBUILD_TESTING=OFF`.
+
+### Running Tests with CTest
+
+After building with testing enabled:
+
+```bash
+cd build
+ctest --output-on-failure
+```
+
+This runs all tests and shows output only for failed tests.
+
+For verbose output:
+```bash
+ctest -V
+```
+
+### Running Tests Directly
+
+You can also run the test binary directly for more detailed output:
+
+```bash
+cd build
+./dungeon_tests
+```
+
+### Test Coverage
+
+The test suite includes:
+
+- **Battle Logic Tests**: Verify NPC attack rules, range checking, and combat scenarios
+  - Orc kills Orcs and Bears within 100 units
+  - Bear kills Squirrels within 100 units
+  - Squirrel doesn't attack
+  - No attacks outside range
+  - Self-attack prevention
+  
+- **Factory Tests**: Verify NPC creation, file I/O, and error handling
+  - Create NPCs by type (Orc, Bear, Squirrel)
+  - Save and load dungeon state
+  - Handle invalid types and file errors
+  
+- **NPC Tests**: Verify core NPC properties and behaviors
+  - Distance calculations
+  - Coordinate validation (0-500 range)
+  - Type-specific attack rules
+
+### Legacy Test Script
+
+The original test script is still available:
+
 ```bash
 ./test.sh
 ```
@@ -116,3 +183,4 @@ This creates sample NPCs, saves them, runs a battle cycle, and verifies the outp
 - C++17 or later
 - CMake 3.10 or later
 - GCC/Clang with C++ support
+- Internet connection (for first build to fetch GoogleTest)
