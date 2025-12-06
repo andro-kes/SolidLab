@@ -1,5 +1,5 @@
-#include "Bear.h"
-#include "BattleVisitor.h"
+#include "../include/Bear.h"
+#include "../include/BattleVisitor.h"
 
 Bear::Bear(const std::string& name, int x, int y) 
     : NPC(name, x, y) {}

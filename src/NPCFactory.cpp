@@ -1,4 +1,4 @@
-#include "NPCFactory.h"
+#include "../include/NPCFactory.h"
 #include <stdexcept>
 
 std::shared_ptr<NPC> NPCFactory::createNPC(const std::string& type, const std::string& name, int x, int y) {

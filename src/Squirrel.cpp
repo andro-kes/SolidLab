@@ -1,5 +1,5 @@
-#include "Squirrel.h"
-#include "BattleVisitor.h"
+#include "../include/Squirrel.h"
+#include "../include/BattleVisitor.h"
 
 Squirrel::Squirrel(const std::string& name, int x, int y) 
     : NPC(name, x, y) {}

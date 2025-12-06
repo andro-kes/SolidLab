@@ -1,8 +1,8 @@
-#include "BattleVisitor.h"
-#include "Observer.h"
-#include "Orc.h"
-#include "Bear.h"
-#include "Squirrel.h"
+#include "../include/BattleVisitor.h"
+#include "../include/Observer.h"
+#include "../include/Orc.h"
+#include "../include/Bear.h"
+#include "../include/Squirrel.h"
 #include <algorithm>
 
 BattleVisitor::BattleVisitor(std::vector<NPCPtr>& npcs) 

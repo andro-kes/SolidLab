@@ -1,9 +1,8 @@
-#include "NPC.h"
-#include "Orc.h"
-#include "Bear.h"
-#include "Squirrel.h"
+#include "../include/NPC.h"
+#include "../include/Orc.h"
+#include "../include/Bear.h"
+#include "../include/Squirrel.h"
 #include <cmath>
-#include <sstream>
 
 NPC::NPC(const std::string& name, int x, int y) 
     : name(name), x(x), y(y) {

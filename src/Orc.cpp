@@ -1,5 +1,5 @@
-#include "Orc.h"
-#include "BattleVisitor.h"
+#include "../include/Orc.h"
+#include "../include/BattleVisitor.h"
 
 Orc::Orc(const std::string& name, int x, int y) 
     : NPC(name, x, y) {}

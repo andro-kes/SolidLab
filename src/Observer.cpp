@@ -1,5 +1,5 @@
-#include "Observer.h"
-#include "NPC.h"
+#include "../include/Observer.h"
+#include "../include/NPC.h"
 #include <iostream>
 
 // Static member initialization

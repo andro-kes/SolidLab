@@ -1,10 +1,9 @@
-#include "NPCFactory.h"
-#include "BattleVisitor.h"
-#include "Observer.h"
+#include "../include/NPCFactory.h"
+#include "../include/BattleVisitor.h"
+#include "../include/Observer.h"
 #include <iostream>
 #include <vector>
 #include <string>
-#include <algorithm>
 
 void printMenu() {
     std::cout << "\n=== Dungeon Editor ===\n";
