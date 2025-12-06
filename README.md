@@ -30,6 +30,7 @@ cmake --build .
 Testing is enabled by default (`BUILD_TESTING` is `ON`). To disable tests:
 ```bash
 cmake -DBUILD_TESTING=OFF ..
+cmake --build .
 ```
 
 ## Running the Application
@@ -109,7 +110,7 @@ src/
 
 ## Running Tests
 
-The project uses GoogleTest for unit testing, fetched automatically via CMake's FetchContent. `BUILD_TESTING` is `ON` by default.
+The project uses GoogleTest for unit testing, which is fetched automatically via CMake's FetchContent. Testing is enabled by default (`BUILD_TESTING` is `ON`).
 
 ### Run with CTest
 
