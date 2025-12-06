@@ -8,6 +8,7 @@ Makefile
 
 # Compiled binaries
 dungeon_editor
+dungeon_tests
 *.o
 *.a
 *.so
@@ -18,6 +19,8 @@ log.txt
 
 # Test files
 dungeon_save.txt
+Testing/
+CTestTestfile.cmake
 
 # IDE files
 .vscode/
