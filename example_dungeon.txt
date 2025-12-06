@@ -1,0 +1,5 @@
+4
+Orc Grom 100 100
+Bear Bruno 120 110
+Squirrel Chip 130 105
+Orc Gruk 200 200
