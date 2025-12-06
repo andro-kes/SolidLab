@@ -5,15 +5,26 @@
 #include "../include/Squirrel.h"
 #include <fstream>
 #include <cstdio>
+#include <filesystem>
+#include <random>
 
 // Test fixture for NPCFactory tests
 class NPCFactoryTest : public ::testing::Test {
 protected:
-    const std::string testFile = "/tmp/test_npc_factory.txt";
+    std::string testFile;
+    
+    void SetUp() override {
+        // Generate unique temp file path
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> dis(10000, 99999);
+        std::string filename = "test_npc_factory_" + std::to_string(dis(gen)) + ".txt";
+        testFile = (std::filesystem::temp_directory_path() / filename).string();
+    }
     
     void TearDown() override {
         // Clean up test file
-        std::remove(testFile.c_str());
+        std::filesystem::remove(testFile);
     }
 };
 
@@ -185,8 +196,9 @@ TEST_F(NPCFactoryTest, LoadFileWithInvalidType) {
 
 // Test: Load from non-existent file throws exception
 TEST_F(NPCFactoryTest, LoadNonExistentFileThrows) {
+    std::string nonexistentFile = (std::filesystem::temp_directory_path() / "nonexistent_file_xyz_12345.txt").string();
     EXPECT_THROW(
-        NPCFactory::loadFromFile("/tmp/nonexistent_file_12345.txt"),
+        NPCFactory::loadFromFile(nonexistentFile),
         std::runtime_error
     );
 }
@@ -196,8 +208,10 @@ TEST_F(NPCFactoryTest, SaveToInvalidPathThrows) {
     std::vector<NPCPtr> npcs;
     npcs.push_back(std::make_shared<Orc>("Grom", 100, 100));
     
+    // Use a deeply nested non-existent directory path
+    std::string invalidPath = (std::filesystem::temp_directory_path() / "nonexistent_dir_xyz" / "subdir" / "test.txt").string();
     EXPECT_THROW(
-        NPCFactory::saveToFile("/nonexistent_directory/test.txt", npcs),
+        NPCFactory::saveToFile(invalidPath, npcs),
         std::runtime_error
     );
 }
