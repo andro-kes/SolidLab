@@ -24,26 +24,16 @@ A C++ dungeon editor implementing design patterns for managing and simulating NP
 mkdir build
 cd build
 cmake ..
-make
-```
-
-To build with testing (enabled by default):
-```bash
-mkdir build
-cd build
-cmake -DBUILD_TESTING=ON ..
 cmake --build .
 ```
 
-To build without testing:
+Testing is enabled by default (`BUILD_TESTING` is `ON`). To disable tests:
 ```bash
-mkdir build
-cd build
 cmake -DBUILD_TESTING=OFF ..
 cmake --build .
 ```
 
-## Usage
+## Running the Application
 
 Run the editor:
 ```bash
@@ -118,59 +108,39 @@ src/
   └── Observer.cpp    - Observer implementation
 ```
 
-## Testing
+## Running Tests
 
-The project uses GoogleTest for unit testing. Tests are built by default but can be disabled with `-DBUILD_TESTING=OFF`.
+The project uses GoogleTest for unit testing, which is fetched automatically via CMake's FetchContent. Testing is enabled by default (`BUILD_TESTING` is `ON`).
 
-### Running Tests with CTest
-
-After building with testing enabled:
+### Run with CTest
 
 ```bash
 cd build
 ctest --output-on-failure
 ```
 
-This runs all tests and shows output only for failed tests.
+Shows output only for failed tests. For verbose output, use `ctest -V`.
 
-For verbose output:
-```bash
-ctest -V
-```
-
-### Running Tests Directly
-
-You can also run the test binary directly for more detailed output:
+### Run Test Binary Directly
 
 ```bash
 cd build
 ./dungeon_tests
 ```
 
+Runs all tests with detailed GoogleTest output.
+
 ### Test Coverage
 
 The test suite includes:
 
 - **Battle Logic Tests**: Verify NPC attack rules, range checking, and combat scenarios
-  - Orc kills Orcs and Bears within 100 units
-  - Bear kills Squirrels within 100 units
-  - Squirrel doesn't attack
-  - No attacks outside range
-  - Self-attack prevention
-  
 - **Factory Tests**: Verify NPC creation, file I/O, and error handling
-  - Create NPCs by type (Orc, Bear, Squirrel)
-  - Save and load dungeon state
-  - Handle invalid types and file errors
-  
 - **NPC Tests**: Verify core NPC properties and behaviors
-  - Distance calculations
-  - Coordinate validation (0-500 range)
-  - Type-specific attack rules
 
-### Legacy Test Script
+### Legacy Integration Script
 
-The original test script is still available:
+An optional integration test script is available:
 
 ```bash
 ./test.sh
