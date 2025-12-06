@@ -16,6 +16,9 @@ dungeon_editor
 # Log files
 log.txt
 
+# Test files
+dungeon_save.txt
+
 # IDE files
 .vscode/
 .idea/
